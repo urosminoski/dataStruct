@@ -3,21 +3,28 @@
 
 int main(void)
 {
+    printf("\r\n");
+
     node_t *head = NULL; 
 
-    for(size_t i = 0; i < 10; i++) headInsert(&head, i);
+    for(size_t i = 0; i < 20; i++) headInsert(&head, i);
 
-    printf("\r\nOld linked list:\r\n");
+    printf("Old linked list:\r\n");
     printList(head);
 
-    node_t *foundNode = findNode(head, 0);
+    node_t *foundNode = findNode(head, 10);
     if(foundNode == NULL) return 1;
     printf("Found node with value of %d\r\n", foundNode->value);
 
     rmNode(&head, foundNode);
     printf("New linked list:\r\n");
     printList(head);
-    printf("\r\n");
 
+    node_t *newNode = makeNode(76);
+    foundNode = findNode(head, 15);
+    nodeInsert(foundNode, newNode);
+    printList(head);
+
+    printf("\r\n");
     return 0;
 }

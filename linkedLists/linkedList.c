@@ -1,6 +1,6 @@
 #include "linkedList.h"
 
-static node_t *makeNode(const int value)
+node_t *makeNode(const int value)
 {
     node_t *node = malloc(sizeof(node_t));
     node->value = value;
@@ -29,6 +29,13 @@ void headInsert(node_t **head, const int value)
         (*head)->prev = newNode;
     }
     (*head) = newNode;
+}
+
+void nodeInsert(node_t *node, node_t *newNode)
+{
+    newNode->next = node->next;
+    newNode->prev = node;
+    node->next = newNode;
 }
 
 node_t *findNode(node_t *head, const int value)
