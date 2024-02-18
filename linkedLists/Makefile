@@ -13,4 +13,4 @@ run: test
 	./test
 
 clean:
-	del *.o test.exe
+	del *.o *.gch *.exe
