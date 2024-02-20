@@ -72,11 +72,19 @@ bool hashTable_remove(person_t **hashTable, char *name)
 {
     if(name == NULL) return false;
 
-    person_t *found_person = hashTable_lookup(hashTable, name);
-    if(found_person != NULL)
+    uint32_t index = hash(name);
+    for(uint32_t i = 0; i < TABLE_SIZE; i++)
     {
-        found_person = HASH_TABLE_DELETED;
-        return true;
+        uint32_t newIndex = (index + i) % TABLE_SIZE;
+
+        if(hashTable[newIndex] == NULL) return false;
+        if(hashTable[newIndex] == HASH_TABLE_DELETED) continue;
+        if(hashTable[newIndex] != NULL &&
+            strncmp(hashTable[newIndex]->name, name, NAME_SIZE) == 0 )
+            {
+                hashTable[newIndex] = HASH_TABLE_DELETED;
+                return true;
+            }
     }
     return false;
 }
