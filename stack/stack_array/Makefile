@@ -6,7 +6,7 @@ all: run clean
 %.o: %.c %.h
 	$(CC) $(CFLAGS) -c $^ -s
 
-test: test.c stack_array.o stack_linkedList.o
+test: test.c stack_array.o
 	$(CC) $(CFLAGS) -o $@ $^ -s
 
 run: test

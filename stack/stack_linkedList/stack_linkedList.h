@@ -8,9 +8,9 @@
 typedef struct node{
     int32_t     value;
     struct node *next;
-} Stack;
+} Stack_t;
 
-int32_t stack_linkedList_pop(Stack **pStack);
-bool stack_linkedList_push(Stack **pStack, int32_t value);
+int32_t stack_linkedList_pop(Stack_t **pStack);
+bool stack_linkedList_push(Stack_t **pStack, int32_t value);
 
 #endif //STACK_LINKED_LIST_H
